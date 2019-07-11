@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, os
 from array import *
 pygame.init()
 
@@ -113,7 +113,11 @@ def drawBoard():
     if gameBoard[2][2] == 1:
         screen.blit(x, s9)
     if gameBoard[2][2] == 2:
-        screen.blit(o, s9)   
+        screen.blit(o, s9)  
+
+def restart_program():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
 
 while True:
     player1turn = True
@@ -125,6 +129,8 @@ while True:
                 if event.key == pygame.K_ESCAPE:                
                     pygame.quit()
                     sys.exit()
+                if event.key == pygame.K_SPACE:
+                    restart_program()
             if event.type == pygame.MOUSEBUTTONUP :
                 pos = pygame.mouse.get_pos()
                 if pos[0]>350 and pos[0]<666 and pos[1]>50 and pos[1]<365:
@@ -178,6 +184,8 @@ while True:
                 if event.key == pygame.K_ESCAPE:                
                     pygame.quit()
                     sys.exit()
+                if event.key == pygame.K_SPACE:
+                    restart_program()
             if event.type == pygame.MOUSEBUTTONUP :
                 pos = pygame.mouse.get_pos()
                 if pos[0]>350 and pos[0]<666 and pos[1]>50 and pos[1]<365:
